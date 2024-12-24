@@ -4,23 +4,40 @@ const cors = require('cors');
 const morgan = require('morgan');
 const productsRoute = require('./routes/ProductsFetch'); // For fetching products
 const addProductRoute = require('./routes/AddProducts');
+const DeleteProductsRoutes = require('./routes/DeleteProduct');
+
+const addcustomerRoutes = require('./routes/AddCustomers');
+const FetchCustomerRoutes = require('./routes/FetchCustomer');
+
+
+const OrdersFetchRoute = require('./routes/OrdersFetch');
 
 const app = express();
 const port = 3000; // Port where your app will run
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 app.use(morgan('dev'));
 
 // Routes
 app.use('/api', productsRoute); // For fetching products
 app.use('/api', addProductRoute); // For adding products
+app.use('/api', addcustomerRoutes); // For adding products
+app.use('/api', DeleteProductsRoutes);
+app.use('/api', OrdersFetchRoute);
+app.use('/api', FetchCustomerRoutes);
+
 
 // Default route for testing
 app.get('/', (req, res) => {
     res.send('API is running!');
 });
+
 
 // Start the server
 app.listen(port, () => {
