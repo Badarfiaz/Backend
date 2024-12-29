@@ -13,14 +13,14 @@ const pool = new Pool({
     port: 5432,                 // PostgreSQL port
 });
 router.post('/addCustomer', async (req, res) => {
-    const { first_name, last_name, email, phone_number, address , city } = req.body;
+    const { Customer_id,first_name, last_name, email, phone_number, address , city , Customer_Password } = req.body;
     console.log('Received data:', req.body); // Debugging
     
     const query = `
-        INSERT INTO public."customers" ("first_name", "last_name", "email", "phone_number", "address" , city)
-        VALUES ($1, $2, $3, $4, $5 ,$6) RETURNING *;
+        INSERT INTO public."customers" ("Customer_id","first_name", "last_name", "email", "phone_number", "address" , city , Customer_Password )
+        VALUES ($1, $2, $3, $4, $5 ,$6 , $7 ,$8) RETURNING *;
     `;
-    const values = [first_name, last_name, email, phone_number, address , city];
+    const values = [Customer_id ,first_name, last_name, email, phone_number, address , city, Customer_Password];
 
     try {
         const result = await pool.query(query, values);

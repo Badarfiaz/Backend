@@ -11,6 +11,9 @@ const FetchCustomerRoutes = require('./routes/FetchCustomer');
 
 
 const OrdersFetchRoute = require('./routes/OrdersFetch');
+const  AddOrdersRoute = require('./routes/AddOrders');
+
+const  LoginUserRoutes = require('./routes/LoginUser');
 
 const app = express();
 const port = 3000; // Port where your app will run
@@ -31,6 +34,8 @@ app.use('/api', addcustomerRoutes); // For adding products
 app.use('/api', DeleteProductsRoutes);
 app.use('/api', OrdersFetchRoute);
 app.use('/api', FetchCustomerRoutes);
+app.use('/api', AddOrdersRoute);
+app.use('/api', LoginUserRoutes);
 
 
 // Default route for testing
