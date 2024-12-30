@@ -2,18 +2,21 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
+
+
 const productsRoute = require('./routes/ProductsFetch'); // For fetching products
 const addProductRoute = require('./routes/AddProducts');
 const DeleteProductsRoutes = require('./routes/DeleteProduct');
-
 const addcustomerRoutes = require('./routes/AddCustomers');
 const FetchCustomerRoutes = require('./routes/FetchCustomer');
-
-
 const OrdersFetchRoute = require('./routes/OrdersFetch');
 const  AddOrdersRoute = require('./routes/AddOrders');
-
 const  LoginUserRoutes = require('./routes/LoginUser');
+const  OrderRecivedRoutes = require('./Routes/ViewOrderRecvied');
+const  UpdateStatusRoutes = require('./Routes/UpdateStatus');
+const  AddReviewRoutes = require('./Routes/AddReview');
+const  ViewReviewRoutes = require('./Routes/ViewsFetchReviews');
+
 
 const app = express();
 const port = 3000; // Port where your app will run
@@ -21,7 +24,7 @@ const port = 3000; // Port where your app will run
 // Middleware
 app.use(bodyParser.json());
 app.use(cors({
-    origin: '*',
+    origin: '*', // Restrict to your frontend origin
     methods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
@@ -36,6 +39,10 @@ app.use('/api', OrdersFetchRoute);
 app.use('/api', FetchCustomerRoutes);
 app.use('/api', AddOrdersRoute);
 app.use('/api', LoginUserRoutes);
+app.use('/api', OrderRecivedRoutes);
+app.use('/api', UpdateStatusRoutes);
+app.use('/api', AddReviewRoutes);
+app.use('/api', ViewReviewRoutes);
 
 
 // Default route for testing
