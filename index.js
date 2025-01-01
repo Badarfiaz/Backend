@@ -16,6 +16,8 @@ const  OrderRecivedRoutes = require('./Routes/ViewOrderRecvied');
 const  UpdateStatusRoutes = require('./Routes/UpdateStatus');
 const  AddReviewRoutes = require('./Routes/AddReview');
 const  ViewReviewRoutes = require('./Routes/ViewsFetchReviews');
+const  FetchComplaintsRoutes = require('./Routes/FetchComplaints');
+const  AddComplaintsRoutes = require('./Routes/AddComplaints');
 
 
 const app = express();
@@ -43,6 +45,8 @@ app.use('/api', OrderRecivedRoutes);
 app.use('/api', UpdateStatusRoutes);
 app.use('/api', AddReviewRoutes);
 app.use('/api', ViewReviewRoutes);
+app.use('/api', FetchComplaintsRoutes);
+app.use('/api', AddComplaintsRoutes);
 
 
 // Default route for testing
