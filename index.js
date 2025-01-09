@@ -18,6 +18,7 @@ const  AddReviewRoutes = require('./Routes/AddReview');
 const  ViewReviewRoutes = require('./Routes/ViewsFetchReviews');
 const  FetchComplaintsRoutes = require('./Routes/FetchComplaints');
 const  AddComplaintsRoutes = require('./Routes/AddComplaints');
+const  DeleteCustomerRoues = require('./Routes/DeleteCustomer');
 
 
 const app = express();
@@ -34,19 +35,25 @@ app.use(morgan('dev'));
 
 // Routes
 app.use('/api', productsRoute); // For fetching products
-app.use('/api', addProductRoute); // For adding products
-app.use('/api', addcustomerRoutes); // For adding products
-app.use('/api', DeleteProductsRoutes);
 app.use('/api', OrdersFetchRoute);
 app.use('/api', FetchCustomerRoutes);
-app.use('/api', AddOrdersRoute);
-app.use('/api', LoginUserRoutes);
-app.use('/api', OrderRecivedRoutes);
-app.use('/api', UpdateStatusRoutes);
-app.use('/api', AddReviewRoutes);
-app.use('/api', ViewReviewRoutes);
 app.use('/api', FetchComplaintsRoutes);
+
+app.use('/api', OrderRecivedRoutes);
+app.use('/api', ViewReviewRoutes);
+
+app.use('/api', addProductRoute); // For adding products
+app.use('/api', addcustomerRoutes); // For adding products
+app.use('/api', AddOrdersRoute);
 app.use('/api', AddComplaintsRoutes);
+app.use('/api', AddReviewRoutes);
+
+app.use('/api', LoginUserRoutes);
+app.use('/api', UpdateStatusRoutes);
+
+
+app.use('/api', DeleteProductsRoutes);
+app.use('/api', DeleteCustomerRoues);
 
 
 // Default route for testing
