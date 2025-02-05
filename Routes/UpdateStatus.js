@@ -2,15 +2,13 @@ const express = require('express');
 const router = express.Router();
 const { Pool } = require('pg');
 
-// PostgreSQL connection
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'EnchantByReem',
-  password: 'Qwerty',
-  port: 5432,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
-
 // Update Order Status
 router.post('/UpdateStatus', async (req, res) => {
   const { Customer_id } = req.query; // Extract from URL query

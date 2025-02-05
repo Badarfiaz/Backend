@@ -3,15 +3,13 @@
  const { Pool } = require('pg');
  
  const router = express.Router();
- 
- // Set up PostgreSQL connection
- const pool = new Pool({
-     user: 'postgres',           // Your PostgreSQL username
-     host: 'localhost',          // Your database host (localhost for local)
-     database: 'EnchantByReem',  // Database name
-     password: 'Qwerty',         // Your PostgreSQL password
-     port: 5432,                 // PostgreSQL port
- });
+const pool = new Pool({
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
+});
  router.post('/addOrders', async (req, res) => {
      const { Customer_id,Product_id, quantity, payment_method, total_amount, order_status} = req.body;
      console.log('Received data:', req.body); // Debugging

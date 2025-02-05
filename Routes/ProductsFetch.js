@@ -4,13 +4,12 @@ const { Pool } = require('pg');
 // Create a router
 const router = express.Router();
 
-// Set up PostgreSQL connection
 const pool = new Pool({
-    user: 'postgres',          // Default PostgreSQL user; replace if different
-    host: 'localhost',         // Assuming your database is running locally
-    database: 'EnchantByReem', // Your database name
-    password: 'Qwerty', // Replace with your actual password
-    port: 5432,                // Default PostgreSQL port
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
 });
 
 
